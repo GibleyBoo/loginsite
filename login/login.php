@@ -11,29 +11,31 @@ if (isset($_POST['submit'])) {
 
     $loginCredentials = [
         "username" => "admin",
-        "password" => hash("sha256","admin123")
+        "password" => password_hash("admin123",PASSWORD_DEFAULT)
     ];
 
     if (isset($_POST['username']) && isset($_POST['password'])) {
 
         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
-        $password = hash("sha256",$_POST['password']);
-        echo $password;
+        $password = $_POST['password'];
 
         if ($username == $loginCredentials['username']
-            && $password == $loginCredentials['password']){
-            echo "<h1>Välkommen to the secret page.</h1>";
+            && password_verify($password,$loginCredentials['password'])){
+
+            echo "<h1>Welcome to the secret page.</h1>";
+
+            echo "<pre>" . print_r($_POST,1) . "</pre>";
         }
         elseif ($username != $loginCredentials['username']
-                || $password != $loginCredentials['password']) {
-            echo "<h1>Du har entered wrong username or password.</h1>";
+                || !password_verify($password, $loginCredentials['password'])) {
+            echo "<h1>You have entered wrong username or password.</h1>";
+            echo "<h1><a href=\"http://localhost:63342/webbutveckling/site/\">Go back</a></h1>";
         }
 
     }
 
 
 
-    echo "<pre>" . print_r($_POST,1) . "</pre>";
 
 
 
