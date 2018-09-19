@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portalen till den hemliga sidan</title>
+    <link href="https://fonts.googleapis.com/css?family=Alegreya%7CAlegreya+Sans" rel="stylesheet">
+    <style>
+        main {
+            width: 80%;
+            margin: 0 auto;
+
+        }
+        body {
+            font-family: Alegreya-Sanss;
+        }
+
+    </style>
+
+</head>
+<body>
+<main>
+    <h1>Välkommen</h1>
+    <form action="login/login.php" method="POST">
+        <fieldset id="login-form">
+            <legend>Login</legend>
+
+            <p>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username">
+            </p>
+
+            <p>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password">
+            </p>
+
+            <p>
+                <input type="submit" name="submit" id="submit" value="Login">
+            </p>
+
+        </fieldset>
+
+    </form>
+</main>
+</body>
+</html>
